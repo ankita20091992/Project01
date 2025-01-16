@@ -60,6 +60,16 @@ public class Account {
 		Password = password;
 	}
 
+	@Override
+	public String toString() {
+		return "Account "
+				+ "[accountId=" + accountId + 
+				", accountName=" + accountName + 
+				", accountEmail=" + accountEmail + 
+				", Password=" + Password + 
+				"]";
+	}
+
 	
 
 	

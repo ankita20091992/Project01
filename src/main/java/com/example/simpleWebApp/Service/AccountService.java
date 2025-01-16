@@ -1,5 +1,6 @@
 package com.example.simpleWebApp.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,11 +11,11 @@ import com.example.simpleWebApp.Model.Account;
 @Service
 public class AccountService {
 	
-	List<Account> accounts = Arrays.asList(
+	List<Account> accounts = new ArrayList<>(Arrays.asList(
 			new Account(101, "Ram", "ram07@x.com", "0702" ),
 			new Account(102, "Shyam","shyam02@x.com", "0803"),
 			new Account(103, "Sita", "sita77@z.com", "0589")
-			);
+			));
 	
 	public List<Account> getAccount() {
 		return accounts;
@@ -31,5 +32,25 @@ public class AccountService {
 
 	public void addAccount(Account acc) {
 		accounts.add(acc);
+	}
+
+	public void updateAccount(Account account) {
+		int index=0;
+		for(int i=0;i<accounts.size();i++)
+			if(accounts.get(i).getAccountId()==account.getAccountId())
+				index = i;
+		
+		accounts.set(index, account);
+		
+	}
+
+	public void deleteAccount(int accountId) {
+		int index=0;
+		for(int i=0;i<accounts.size();i++)
+			if(accounts.get(i).getAccountId()==accountId)
+				index = i;
+		
+		accounts.remove(index);
+		
 	}
 }
